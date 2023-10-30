@@ -1,0 +1,61 @@
+= S3 Bucket File Uploader
+
+A simple web service built in Go to facilitate file uploads to an AWS S3 bucket. This service is built using the Gin web framework, structured logging with logrus, and AWS SDK for Go.
+
+== Prerequisites
+
+* Go installed on your machine.
+* Proper AWS credentials set either as environment variables (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`) or configured via AWS CLI.
+* An existing S3 bucket to which you have write permissions.
+
+== Setup & Configuration
+
+. *Clone the repository:*
+
+----
+git clone [repository_url]
+cd [repository_directory]
+----
+
+. *Set the necessary environment variables:*
+
+----
+export AWS_REGION=<your_aws_region>
+export BUCKET_NAME=<your_s3_bucket_name>
+export USERNAME=<basic_auth_username>
+export PASSWORD=<basic_auth_password>
+----
+
+. *Run the service:*
+
+----
+go run main.go
+----
+
+== API Usage
+
+*Endpoint:* `POST /upload`
+
+*Authentication:* Basic Auth using the provided `USERNAME` and `PASSWORD`.
+
+*Form Data*
+
+* `file`: The file to be uploaded (sent as form data).
+
+*Parameters:*
+
+* `folder` (optional): S3 folder/directory in which to save the uploaded file. Defaults to "stores" if not specified.
+
+*CURL Example:*
+
+----
+curl -X POST -u $USERNAME:$PASSWORD -F "file=@/path/to/your/file.txt" "http://localhost:8080/upload?folder=your_folder_name"
+----
+
+== Logging
+
+The application uses structured logging with logrus, producing logs in JSON format for easy ingestion by log processing tools and platforms.
+
+== Feedback & Contributions
+
+Feel free to raise issues or pull requests if you think there's room for improvement.
