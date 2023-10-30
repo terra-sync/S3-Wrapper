@@ -112,6 +112,12 @@ func main() {
 	r.Use(gin.BasicAuth(gin.Accounts{
 		os.Getenv("USERNAME"): os.Getenv("PASSWORD"),
 	}))
+
 	r.POST("/upload", handleUpload)
-	r.Run(":8080")
+	port, ok := os.LookupEnv("PORT")
+	if ok {
+		r.Run(":" + port)
+	} else {
+		r.Run(":8080")
+	}
 }
