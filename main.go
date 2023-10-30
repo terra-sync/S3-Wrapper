@@ -75,7 +75,7 @@ func handleUpload(c *gin.Context) {
 
 	folder := c.DefaultQuery("folder", "")
 	if folder == "" {
-		folder = "stores"
+		folder = "."
 	}
 
 	bucket_name := os.Getenv("BUCKET_NAME")
