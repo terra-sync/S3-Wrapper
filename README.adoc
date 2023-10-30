@@ -20,6 +20,11 @@ cd [repository_directory]
 . *Set the necessary environment variables:*
 
 ----
+# OPTIONAL (if using environment variables for AWS authentication)
+export AWS_ACCESS_KEY_ID=<your_aws_access_key_id>
+export AWS_SECRET_ACCESS_KEY=<your_aws_secret_key>
+
+# REQUIRED
 export AWS_REGION=<your_aws_region>
 export BUCKET_NAME=<your_s3_bucket_name>
 export USERNAME=<basic_auth_username>
