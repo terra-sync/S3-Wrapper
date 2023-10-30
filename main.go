@@ -12,6 +12,8 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+var s3_client *s3.S3
+
 func init() {
 	log.SetFormatter(&log.JSONFormatter{})
 	log.SetOutput(os.Stdout)
@@ -76,8 +78,6 @@ func handleUpload(c *gin.Context) {
 	bucket_name := os.Getenv("BUCKET_NAME")
 	object_name := folder + "/" + file.Filename
 
-	s3_client := getS3Client()
-
 	content, err := file.Open()
 	if err != nil {
 		sendResponse(log.ErrorLevel, log.Fields{
@@ -107,6 +107,7 @@ func handleUpload(c *gin.Context) {
 }
 
 func main() {
+	s3_client = getS3Client()
 	r := gin.Default()
 	r.Use(gin.BasicAuth(gin.Accounts{
 		os.Getenv("USERNAME"): os.Getenv("PASSWORD"),
