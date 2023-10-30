@@ -1,3 +1,6 @@
+// Copyright (c) 2023 Charalampos Mitrodimas <charmitro@terrasync.net>. All rights reserved.
+// Licensed under the MIT License.
+
 package main
 
 import (

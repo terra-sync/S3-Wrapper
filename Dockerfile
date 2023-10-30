@@ -1,3 +1,6 @@
+# Copyright (c) 2023 Charalampos Mitrodimas <charmitro@terrasync.net>. All rights reserved.
+# Licensed under the MIT License.
+
 FROM golang:1.21 as build
 
 WORKDIR /go/src/s3-wrapper
